@@ -7,7 +7,7 @@ drop into pdb on failure, use ``--ipdb-failures``.
 import pdb
 from nose.plugins.base import Plugin
 
-class Pdb(Plugin):
+class iPdb(Plugin):
     """
     Provides --ipdb and --ipdb-failures options that cause the test runner to
     drop into ipdb if it encounters an error or failure, respectively.
