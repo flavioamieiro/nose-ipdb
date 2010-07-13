@@ -1,0 +1,9 @@
+*.pyc
+*.pyo
+/bin
+/build
+/dist
+/include
+/ipdbplugin.egg-info
+/lib
+
