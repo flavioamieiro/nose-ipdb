@@ -4,7 +4,8 @@ option will drop the test runner into pdb when it encounters an error. To
 drop into pdb on failure, use ``--ipdb-failures``.
 """
 
-import pdb
+import ipdb
+from IPython import ipapi
 from nose.plugins.base import Plugin
 
 class iPdb(Plugin):
@@ -57,6 +58,9 @@ class iPdb(Plugin):
         stdout = sys.stdout
         sys.stdout = sys.__stdout__
         try:
-            pdb.post_mortem(tb)
+            ip = ipapi.get()
+            p = ipdb.Pdb(ip.options.colors)
+            p.reset()
+            p.interaction(None, tb)
         finally:
             sys.stdout = stdout
