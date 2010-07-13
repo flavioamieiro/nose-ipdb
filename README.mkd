@@ -1,0 +1,38 @@
+What about running nose with a smarter interactive debugger?
+
+Use this and *never* risk yourself forgetting `import pdb; pdb.set_trace()` in your code again!
+
+This plugin is 99.99% based on nose's [builtin debug plugin][1].
+
+If you have any ideas about how to improve it, come and fork the code at http://github.com/flavioamieiro/nose-ipdb
+
+Install:
+========
+
+    pip install git+http://github.com/flavioamieiro/nose-ipdb.git
+
+Usage:
+======
+
+To drop into ipdb on errors:
+
+    nosetests --ipdb
+
+To drop into ipdb on failures:
+
+    nosetests --ipdb-failures
+
+License:
+========
+
+GNU Lesser General Public License
+
+Authors:
+========
+
+* Bernardo Fontes (falecomigo@bernardofontes.net)
+* Flávio Amieiro (amieiro.flavio@gmail.com)
+* Henrique Bastos (henrique@bastos.net)
+
+
+[1]: http://www.somethingaboutorange.com/mrl/projects/nose/0.11.2/plugins/debug.html
