@@ -17,7 +17,7 @@ class iPdb(Plugin):
     enabled_for_errors = False
     enabled_for_failures = False
     score = 5 # run last, among builtins
-    
+
     def options(self, parser, env):
         """Register commandline options.
         """
