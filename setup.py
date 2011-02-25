@@ -16,7 +16,7 @@ setup(
 
     If you have any ideas about how to improve it, come and fork the code at http://github.com/flavioamieiro/nose-ipdb
     """,
-    install_requires=['nose', 'ipython', 'ipdb'],
+    install_requires=['nose', 'ipython'],
     license = 'GNU LGPL',
     keywords = 'test unittest nose nosetests plugin debug ipdb ipython',
     py_modules = ['ipdbplugin'],
