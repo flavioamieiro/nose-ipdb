@@ -5,6 +5,7 @@ drop into pdb on failure, use ``--ipdb-failures``.
 """
 
 import sys
+import inspect
 import IPython
 from nose.plugins.base import Plugin
 
@@ -61,6 +62,9 @@ class iPdb(Plugin):
             ip = IPython.ipapi.get()
             p = IPython.Debugger.Pdb(ip.options.colors)
             p.reset()
-            p.interaction(None, tb)
+            # inspect.trace() returns a list of frame information from this
+            # frame to the one that raised the exception being treated
+            frame, filename, line, func_name, ctx, idx = inspect.trace()[-1]
+            p.interaction(frame, tb)
         finally:
             sys.stdout = stdout
