@@ -5,7 +5,6 @@ drop into pdb on failure, use ``--ipdb-failures``.
 """
 
 import sys
-import ipdb
 import IPython
 from nose.plugins.base import Plugin
 
@@ -58,6 +57,7 @@ class iPdb(Plugin):
         stdout = sys.stdout
         sys.stdout = sys.__stdout__
         try:
+            shell = IPython.Shell.IPShell(argv=[''])
             ip = IPython.ipapi.get()
             p = IPython.Debugger.Pdb(ip.options.colors)
             p.reset()
