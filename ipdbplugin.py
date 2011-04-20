@@ -6,6 +6,7 @@ drop into pdb on failure, use ``--ipdb-failures``.
 
 import sys
 import inspect
+import traceback
 import IPython
 from nose.plugins.base import Plugin
 
@@ -57,6 +58,9 @@ class iPdb(Plugin):
         ec, ev, tb = err
         stdout = sys.stdout
         sys.stdout = sys.__stdout__
+        sys.stderr.write('\n- TRACEBACK --------------------------------------------------------------------\n')
+        traceback.print_exception(*err)
+        sys.stderr.write('--------------------------------------------------------------------------------\n')
         try:
             shell = IPython.Shell.IPShell(argv=[''])
             ip = IPython.ipapi.get()
