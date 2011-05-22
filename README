@@ -9,7 +9,7 @@ If you have any ideas about how to improve it, come and fork the code at http://
 Install:
 ========
 
-    pip install git+http://github.com/flavioamieiro/nose-ipdb.git
+    pip install ipdbplugin
 
 Usage:
 ======
