@@ -62,9 +62,18 @@ class iPdb(Plugin):
         traceback.print_exception(*err)
         sys.stderr.write('--------------------------------------------------------------------------------\n')
         try:
-            shell = IPython.Shell.IPShell(argv=[''])
-            ip = IPython.ipapi.get()
-            p = IPython.Debugger.Pdb(ip.options.colors)
+            # The IPython API changed a bit so we should
+            # support the new version
+            if hasattr(IPython, 'InteractiveShell'):
+                shell = IPython.InteractiveShell()
+                ip = IPython.core.ipapi.get()
+                p = IPython.core.debugger.Pdb(ip.colors)
+            # and keep support for older versions
+            else:
+                shell = IPython.Shell.IPShell(argv=[''])
+                ip = IPython.ipapi.get()
+                p = IPython.Debugger.Pdb(ip.options.colors)
+
             p.reset()
             # inspect.trace() returns a list of frame information from this
             # frame to the one that raised the exception being treated
