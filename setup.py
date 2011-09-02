@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='ipdbplugin',
-    version='1.0',
+    version='1.1',
     url='http://github.com/flavioamieiro/nose-ipdb/tree/master',
     author='Flavio Amieiro',
     author_email = 'amieiro.flavio@gmail.com',
