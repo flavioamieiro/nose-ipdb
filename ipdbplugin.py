@@ -7,7 +7,6 @@ drop into pdb on failure, use ``--ipdb-failures``.
 import sys
 import inspect
 import traceback
-import IPython
 from nose.plugins.base import Plugin
 
 class iPdb(Plugin):
@@ -55,6 +54,7 @@ class iPdb(Plugin):
         self.debug(err)
 
     def debug(self, err):
+        import IPython
         ec, ev, tb = err
         stdout = sys.stdout
         sys.stdout = sys.__stdout__
