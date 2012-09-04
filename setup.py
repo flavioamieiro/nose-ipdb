@@ -10,7 +10,7 @@ setup(
     long_description = \
     """What about running nose with a smarter interactive debugger?
 
-    Use this and *never* risk yourself forgetting `import pdb; pdb.set_trace()` in your code again!
+    Use this and *never* risk yourself forgetting `import ipdb; ipdb.set_trace()` in your code again!
 
     This plugin is 99.99% based on nose's builtin debug plugin.
 
