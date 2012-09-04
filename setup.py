@@ -4,8 +4,8 @@ setup(
     name='ipdbplugin',
     version='1.2',
     url='http://github.com/flavioamieiro/nose-ipdb/tree/master',
-    author='Flavio Amieiro',
-    author_email = 'amieiro.flavio@gmail.com',
+    maintainer='Flavio Amieiro',
+    maintainer_email = 'amieiro.flavio@gmail.com',
     description = 'Nose plugin to use iPdb instead of Pdb when tests fail',
     long_description = \
     """What about running nose with a smarter interactive debugger?
