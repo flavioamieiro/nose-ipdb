@@ -65,9 +65,13 @@ class iPdb(Plugin):
             # The IPython API changed a bit so we should
             # support the new version
             if hasattr(IPython, 'InteractiveShell'):
-                shell = IPython.InteractiveShell()
-                ip = IPython.core.ipapi.get()
-                p = IPython.core.debugger.Pdb(ip.colors)
+                if hasattr(IPython.InteractiveShell, 'instance'):
+                    shell = IPython.InteractiveShell.instance()
+                    p = IPython.core.debugger.Pdb(shell.colors)
+                else:
+                    shell = IPython.InteractiveShell()
+                    ip = IPython.core.ipapi.get()
+                    p = IPython.core.debugger.Pdb(ip.colors)
             # and keep support for older versions
             else:
                 shell = IPython.Shell.IPShell(argv=[''])
