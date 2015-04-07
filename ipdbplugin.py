@@ -56,10 +56,14 @@ class iPdb(Plugin):
     def debug(self, err):
         import IPython
         ec, ev, tb = err
+        # This is to work around issue #16, that occured when the exception
+        # value was being passed as a string.
+        if isinstance(ev, str):
+            ev = ec(ev)
         stdout = sys.stdout
         sys.stdout = sys.__stdout__
         sys.stderr.write('\n- TRACEBACK --------------------------------------------------------------------\n')
-        traceback.print_exception(*err)
+        traceback.print_exception(ec, ev, tb)
         sys.stderr.write('--------------------------------------------------------------------------------\n')
         try:
             # The IPython API changed a bit so we should
