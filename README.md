@@ -6,13 +6,13 @@ This plugin is 99.99% based on nose's [builtin debug plugin][1].
 
 If you have any ideas about how to improve it, come and fork the code at http://github.com/flavioamieiro/nose-ipdb
 
-Install:
-========
+Install
+--------
 
     pip install ipdbplugin
 
-Usage:
-======
+Usage
+------
 
 To drop into ipdb on errors:
 
@@ -22,13 +22,13 @@ To drop into ipdb on failures:
 
     nosetests --ipdb-failures
 
-License:
-========
+License
+--------
 
 GNU Lesser General Public License
 
-Authors:
-========
+Authors
+--------
 
 * Bernardo Fontes (falecomigo@bernardofontes.net)
 * Flávio Amieiro (amieiro.flavio@gmail.com)
