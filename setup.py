@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='ipdbplugin',
-    version='1.4.2',
+    version='1.4.3',
     url='http://github.com/flavioamieiro/nose-ipdb/tree/master',
     maintainer='Flavio Amieiro',
     maintainer_email='amieiro.flavio@gmail.com',
@@ -41,6 +41,7 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Programming Language :: Python :: 3.5',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ]
 )
