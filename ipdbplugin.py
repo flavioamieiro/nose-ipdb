@@ -66,21 +66,22 @@ class iPdb(Plugin):
         traceback.print_exception(ec, ev, tb)
         sys.stderr.write('--------------------------------------------------------------------------------\n')
         try:
-            # The IPython API changed a bit so we should
-            # support the new version
-            if hasattr(IPython, 'InteractiveShell'):
-                if hasattr(IPython.InteractiveShell, 'instance'):
-                    shell = IPython.InteractiveShell.instance()
-                    p = IPython.core.debugger.Pdb(shell.colors)
-                else:
-                    shell = IPython.InteractiveShell()
+            try:
+                # ipython >= 1.0
+                from IPython.terminal.ipapp import TerminalIPythonApp
+                app = TerminalIPythonApp.instance()
+                app.initialize(argv=[])
+                p = IPython.core.debugger.Pdb(app.shell.colors)
+            except ImportError:
+                try:
+                    # 0.11 <= ipython <= 0.13
                     ip = IPython.core.ipapi.get()
                     p = IPython.core.debugger.Pdb(ip.colors)
-            # and keep support for older versions
-            else:
-                shell = IPython.Shell.IPShell(argv=[''])
-                ip = IPython.ipapi.get()
-                p = IPython.Debugger.Pdb(ip.options.colors)
+                except AttributeError:
+                    # ipython <= 0.10
+                    shell = IPython.Shell.IPShell(argv=[''])
+                    ip = IPython.ipapi.get()
+                    p = IPython.Debugger.Pdb(ip.options.colors)
 
             p.reset()
             # inspect.getinnerframes() returns a list of frames information
