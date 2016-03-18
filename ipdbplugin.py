@@ -70,7 +70,7 @@ class iPdb(Plugin):
                 # ipython >= 1.0
                 from IPython.terminal.ipapp import TerminalIPythonApp
                 app = TerminalIPythonApp.instance()
-                app.initialize(argv=[])
+                app.initialize(argv=['--no-banner'])
                 p = IPython.core.debugger.Pdb(app.shell.colors)
             except ImportError:
                 try:
