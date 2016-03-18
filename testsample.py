@@ -13,3 +13,10 @@ def test_failure_with_print():
 def test_failure_with_local_variable():
     local_variable = 'foo'
     assert local_variable == 'bar', "This is a failure with a local variable in scope"
+
+def test_error_with_print_and_exception_that_needs_more_than_one_arg():
+    class ExceptionWithManyArgs(Exception):
+        def __init__(self, arg1, arg2, *args, **kwargs):
+            super(ExceptionWithManyArgs, self).__init__(*args, **kwargs)
+    print("Test")
+    raise ExceptionWithManyArgs('arg1', 'arg2')
