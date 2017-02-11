@@ -66,24 +66,12 @@ class iPdb(Plugin):
         traceback.print_exception(ec, ev, tb)
         sys.stderr.write('--------------------------------------------------------------------------------\n')
         try:
-            try:
-                # ipython >= 1.0
-                from IPython.terminal.ipapp import TerminalIPythonApp
-                app = TerminalIPythonApp.instance()
-                app.initialize(argv=['--no-banner'])
-                p = IPython.core.debugger.Pdb(app.shell.colors)
-            except ImportError:
-                try:
-                    # 0.11 <= ipython <= 0.13
-                    ip = IPython.core.ipapi.get()
-                    p = IPython.core.debugger.Pdb(ip.colors)
-                except AttributeError:
-                    # ipython <= 0.10
-                    shell = IPython.Shell.IPShell(argv=[''])
-                    ip = IPython.ipapi.get()
-                    p = IPython.Debugger.Pdb(ip.options.colors)
-
+            from IPython.terminal.ipapp import TerminalIPythonApp
+            app = TerminalIPythonApp.instance()
+            app.initialize(argv=['--no-banner'])
+            p = IPython.core.debugger.Pdb(app.shell.colors)
             p.reset()
+
             # inspect.getinnerframes() returns a list of frames information
             # from this frame to the one that raised the exception being
             # treated
