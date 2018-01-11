@@ -3,11 +3,13 @@ This plugin provides ``--ipdb`` and ``--ipdb-failures`` options. The ``--ipdb``
 option will drop the test runner into pdb when it encounters an error. To
 drop into pdb on failure, use ``--ipdb-failures``.
 """
-
+import logging
 import sys
 import inspect
 import traceback
 from nose.plugins.base import Plugin
+
+log = logging.getLogger("nose.plugins.ipdbplugin")
 
 class iPdb(Plugin):
     """
@@ -38,6 +40,9 @@ class iPdb(Plugin):
         self.enabled = options.ipdbErrors or options.ipdbFailures
         self.enabled_for_errors = options.ipdbErrors
         self.enabled_for_failures = options.ipdbFailures
+        if options.capture:
+            log.warn("Autocomplete will not work with stdout capture on. "
+                     "Use --nocapture to have the ipdb shell working properly.")
 
     def addError(self, test, err):
         """Enter ipdb if configured to debug errors.
