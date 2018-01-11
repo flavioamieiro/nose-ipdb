@@ -71,7 +71,11 @@ class iPdb(Plugin):
                 from IPython.terminal.ipapp import TerminalIPythonApp
                 app = TerminalIPythonApp.instance()
                 app.initialize(argv=['--no-banner'])
-                p = IPython.core.debugger.Pdb(app.shell.colors)
+                try:
+                    # ipython >= 5.0
+                    p = IPython.terminal.debugger.TerminalPdb(app.shell.colors)
+                except AttributeError:
+                    p = IPython.core.debugger.Pdb(app.shell.colors)
             except ImportError:
                 try:
                     # 0.11 <= ipython <= 0.13
